@@ -41,7 +41,7 @@ feature:
   icon_pack: fab
   name: R
  
- - description: ""
+- description: ""
   icon: fa-biking
   icon_pack: fas
   name: Cycling
