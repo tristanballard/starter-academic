@@ -32,7 +32,7 @@ feature:
   name: Earth Science
 
 - description: ""
-  icon: twisted_rightwards_arrows
+  icon: :twisted_rightwards_arrows:
   icon_pack: emoji
   name: Neural Networks
  
