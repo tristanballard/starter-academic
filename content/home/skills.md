@@ -17,18 +17,36 @@ subtitle:
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
 - description: ""
-  icon: r-project
-  icon_pack: fab
-  name: R
-- description: ""
   icon: "chart-line"
   icon_pack: fas
   name: Statistics
+
+- description: ""
+  icon: r-project
+  icon_pack: fab
+  name: R
+
 - description: ""
   icon: "globe-americas"
   icon_pack: fas
   name: Earth Science
 
+- description: ""
+  icon: r-project
+  icon_pack: fab
+  name: Keras
+ 
+- description: ""
+  icon: fa-python
+  icon_pack: fab
+  name: R
+ 
+ - description: ""
+  icon: fa-biking
+  icon_pack: fas
+  name: Cycling
+ 
+ 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
 #  icon_pack: "emoji"
