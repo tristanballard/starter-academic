@@ -32,8 +32,8 @@ feature:
   name: Earth Science
 
 - description: ""
-  icon: r-project
-  icon_pack: fab
+  icon: keras
+  icon_pack: custom
   name: Keras
  
 - description: ""
