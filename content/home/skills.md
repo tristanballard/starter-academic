@@ -16,17 +16,17 @@ subtitle:
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-- description: ""
+- description: " "
   icon: "chart-line"
   icon_pack: fas
   name: Statistics
 
-- description: ""
+- description: " "
   icon: r-project
   icon_pack: fab
   name: R
 
-- description: ""
+- description: " "
   icon: "globe-americas"
   icon_pack: fas
   name: Earth Science
