@@ -32,9 +32,9 @@ feature:
   name: Earth Science
 
 - description: ""
-  icon: keras
-  icon_pack: custom
-  name: Keras
+  icon: twisted_rightwards_arrows
+  icon_pack: emoji
+  name: Neural Networks
  
 - description: ""
   icon: python
