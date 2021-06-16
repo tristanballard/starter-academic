@@ -32,8 +32,8 @@ feature:
   name: Earth Science
 
 - description: ""
-  icon: :twisted_rightwards_arrows:
-  icon_pack: emoji
+  icon: code-branch
+  icon_pack: fas
   name: Neural Networks
  
 - description: ""
