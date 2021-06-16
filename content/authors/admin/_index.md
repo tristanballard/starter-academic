@@ -72,4 +72,4 @@ highlight_name: false
 
 Tristan Ballard is a PhD student at Stanford University. His research interests include developing data-driven solutions to global challenges, with several research projects implementing modern data science techniques to better understand human impact on global climate and water resources over a range of scales. 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/CV_6_16_21.pdf" "newtab" >}}resumé{{< /staticref >}}.
