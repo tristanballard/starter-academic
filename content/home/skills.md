@@ -37,12 +37,12 @@ feature:
   name: Keras
  
 - description: ""
-  icon: fa-python
+  icon: python
   icon_pack: fab
-  name: R
+  name: Python
  
 - description: ""
-  icon: fa-biking
+  icon: biking
   icon_pack: fas
   name: Cycling
  
