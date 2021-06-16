@@ -6,7 +6,7 @@ title: Tristan Ballard
 superuser: true
 
 # Role/position/tagline
-role: AI and Earth Science Researcher
+role: AI and Climate Science
 
 # Organizations/Affiliations to show in About widget
 organizations:
