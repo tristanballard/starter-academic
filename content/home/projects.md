@@ -29,6 +29,8 @@ content:
     tag: '*'
   - name: Deep Learning
     tag: Deep Learning
+  - name: Quantile Regression
+    tag: Quantile Regression
   - name: Other
     tag: Demo
 
