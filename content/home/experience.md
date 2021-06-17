@@ -22,28 +22,29 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: CEO
-    company: GenCoin
-    company_url: ''
+  - title: Research Fellow
+    company: Sust Global
+    company_url: 'https://www.sustglobal.com'
     company_logo: org-gc
     location: California
-    date_start: '2021-01-01'
+    date_start: '2020-05-01'
     date_end: ''
     description: |2-
         Responsibilities include:
         
-        * Analysing
-        * Modelling
-        * Deploying
+        * Applying AI and ML to latest climate models
+        * Processing 100s of GBs of spatiotemporal data
+        * Developing asset-level risk metrics
+        * Evaluating model performance
         
-  - title: Professor of Semiconductor Physics
-    company: University X
+  - title: PhD Student
+    company: Stanford University
     company_url: ''
     company_logo: org-x
     location: California
-    date_start: '2016-01-01'
-    date_end: '2020-12-31'
-    description: Taught electronic engineering and researched semiconductor physics.
+    date_start: '2015-09-01'
+    date_end: '2020-08-27'
+    description: Developed statistical models for ecological impacts of climate change
 
 design:
   columns: '2'
