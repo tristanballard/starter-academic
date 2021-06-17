@@ -25,7 +25,7 @@ experience:
   - title: Research Fellow
     company: Sust Global
     company_url: 'https://www.sustglobal.com'
-    company_logo: org-gc
+    company_logo: sust
     location: California
     date_start: '2020-05-01'
     date_end: ''
@@ -40,11 +40,14 @@ experience:
   - title: PhD Student
     company: Stanford University
     company_url: ''
-    company_logo: org-x
+    company_logo: stanford
     location: California
     date_start: '2015-09-01'
     date_end: '2020-08-27'
-    description: Developed statistical models for ecological impacts of climate change
+    description: |2-
+        Responsibilities include:
+        
+        * Developing statistical models for ecological impacts of climate change
 
 design:
   columns: '2'
