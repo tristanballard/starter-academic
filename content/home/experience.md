@@ -43,7 +43,7 @@ experience:
     company_logo: stanford
     location: California
     date_start: '2015-09-01'
-    date_end: '2020-08-27'
+    date_end: '2021-08-27'
     description: |2-
         Responsibilities include:
         
