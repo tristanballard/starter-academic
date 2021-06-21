@@ -1,5 +1,5 @@
 ---
-title: An introduction to quantile regression in R
+title: Extreme event analysis using quantile regression
 subtitle: 
 
 # Summary for listings and search engines
@@ -40,11 +40,14 @@ tags:
 # - 教程
 ---
 
-## Overview
+Extreme events like heatwaves, cyclones, and droughts can be incredibly dangerous and costly, and we expect climate change to play an increasing role in their frequency going forward. Unfortunately, modeling extreme events is hard. First, you need a lot of data. Second, most statistical models are not designed for extreme events. Third, extreme event models that do exist can have a high barrier to entry. Here I'll discuss a model I have found very helpful in my research to tackle these challenges: quantile regression.
 
-1. The Wowchemy website builder for Hugo, along with its starter templates, is designed for professional creators, educators, and teams/organizations - although it can be used to create any kind of site
-2. The template can be modified and customised to suit your needs. It's a good platform for anyone looking to take control of their data and online identity whilst having the convenience to start off with a **no-code solution (write in Markdown and customize with YAML parameters)** and having **flexibility to later add even deeper personalization with HTML and CSS**
-3. You can work with all your favourite tools and apps with hundreds of plugins and integrations to speed up your workflows, interact with your readers, and much more
+## Why quantile regression?
+
+1. Flexibly explore different parts of the target distribution, like the tails
+2. Utilizes the full dataset
+3. Easy implementation thanks to _quantreg__ package in R
+
 
 
 
