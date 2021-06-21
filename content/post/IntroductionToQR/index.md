@@ -40,13 +40,18 @@ tags:
 # - 教程
 ---
 
-Extreme events like heatwaves, cyclones, and droughts can be incredibly dangerous and costly, and we expect climate change to play an increasing role in their frequency going forward. Unfortunately, modeling extreme events is hard. First, you need a lot of data. Second, most statistical models are not designed for extreme events. Third, extreme event models that do exist can have a high barrier to entry. Here I'll discuss a model I have found very helpful in my research to tackle these challenges: quantile regression.
+Climate change will increase the frequency and severity of extreme events like heatwaves, cyclones, and droughts. Unfortunately, *modeling extreme events is hard*. First, you need a lot of data. Second, most statistical models are not designed for extreme events. Third, extreme event models that do exist can have a high barrier to entry. Here I'll discuss a model I have found very helpful in my research to tackle these challenges: quantile regression.
 
 ## Why quantile regression?
 
-1. Flexibly explore different parts of the target distribution, like the tails
-2. Utilizes the full dataset
-3. Easy implementation thanks to _quantreg__ package in R
+1. Flexibly explore different parts of the target distribution (e.g. the tails)
+2. Detect changes in mean, variability, and skew 
+3. Utilizes the full dataset
+4. Easy implementation thanks to _quantreg_ package in R
+
+The opening graphic above from the IPCC demonstrates one use case of quantile regression. A shift in the distribution of, say, temperatures to warmer conditions will lead to far more extreme events (left). Most standard statistical methods are well suited to analyzing such changes in the mean. But, what happens when there are changes in variability (right), or changes in the mean and variability combined? Standard linear regression would report zero trend, from which you might falsely assume there is not trend in extreme events and thus underestimate your climate risk.
+
+ 
 
 
 
