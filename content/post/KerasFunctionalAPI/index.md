@@ -56,7 +56,7 @@ Thanks to the Keras functional API, it is remarkably easy to combine recurrent n
 
 ## Model Architecture
 #### LSTM Layers
-I feed all input variables that are time series into separate long short-term memory (LSTM) cells. LSTMs, first proposed in 1997 by Sepp Hochreiter and Jürgen Schmidhuber, are a type of recurrent neural network commonly used in time series applications. LSTMS are capable of taking the input, storing it for as long as needed, and extracting its value later. As a result, they have been very suuccessful in tasks with long-term patterns like speech recognition and long texts. A commonly used alternative is the gated recurrent unit (GRU), which can be easily swapped in the API.
+I feed all input variables that are time series into separate long short-term memory (LSTM) cells. LSTMs, first proposed in 1997 by Sepp Hochreiter and Jurgen Schmidhuber, are a type of recurrent neural network commonly used in time series applications. LSTMS are capable of taking the input, storing it for as long as needed, and extracting its value later. As a result, they have been very successful in tasks with long-term patterns like speech recognition and long texts. A commonly used alternative is the gated recurrent unit (GRU), which can be easily swapped in the API.
 
 ``` r
 airTLayer <- airTInput %>% 
