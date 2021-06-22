@@ -24,7 +24,7 @@ featured: false
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image:
-  caption: 'Network Architecture'
+  title: 'Network Architecture'
   focal_point: ""
   placement: 2
   preview_only: false
@@ -49,7 +49,7 @@ I set out to develop a model for predicting river temperatures so that I can est
 
 There are a few options for tackling this variable mismatch:
 
-1. Use an ANN and ignore the time series nature. Fast but ultimately lower accuracy since it leaves out so much useful information. This is what most if not all prior neural networks developed for river temperatures have done. 
+1. Use an ANN and ignore the time series aspect. _Pros_: Fast and easy. _Cons_: Lower accuracy since it leaves out so much useful information. This is what every neural network developed for river temperatures I have come across has done. 
 2. Use a recurrent neural network with the static variables converted to time series, repeating the same values at every time step. Woefully computationally inefficient.
 3. Combine the best aspects of 1 and 2
 
@@ -67,7 +67,7 @@ airTLayer <- airTInput %>%
 
 The _units_ argument determines the dimensionality of the output space. I set it to 7 days. The input data are organized such that the 'lookback' period is 7 days as well, meaning that the model can only see data from the previous week when trying to fit today's value. I chose the lookback period based on a literature review, where we have little reason to believe river temperatures from more than a week prior will give useful information about todays temperature. The output dimension of 7 days is a tuneable hyperparameter and does not need to match the lookback period. 
 
-The two dropout specifications impose a moderate regularization effect to help mitigate overfitting. How does it work? Simply put, during each forward or backward pass of the algorithm, 15% of the nodes are randomly ignored. This 15% level is also a tuneable hyperparameter. 
+The two _dropout_ specifications impose a moderate regularization effect to help mitigate overfitting. How does it work? Simply put, during each forward or backward pass of the algorithm, 15% of the nodes are randomly ignored. This 15% level is also a tuneable hyperparameter. 
 
 #### Fully connected layers
 
