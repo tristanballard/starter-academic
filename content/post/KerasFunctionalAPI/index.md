@@ -57,10 +57,7 @@ Thanks to the Keras functional API, it is remarkably easy to combine recurrent n
 #### LSTM Layers
 I feed all input variables that are time series into separate long short-term memory (LSTM) cells. LSTMs, first proposed in 1997 by Sepp Hochreiter and Jürgen Schmidhuber, are a type of recurrent neural network commonly used in time series applications. LSTMS are capable of taking the input, storing it for as long as needed, and extracting its value later. As a result, they have been very suuccessful in tasks with long-term patterns like speech recognition and long texts. A commonly used alternative is the gated recurrent unit (GRU), which can be easily swapped in the API.
 
-``` r
-airTLayer <- airTInput %>% 
-  layer_lstm(units = 7, dropout = 0.15, recurrent_dropout = 0.15)
-```
+
 The _units_ argument determines the dimensionality of the output space. I set it to 7 days. The input data are organized such that the 'lookback' period is 7 days as well, menaing that the model can only see data from the previous week when trying to fit today's value. I chose the lookback period based on a literature review, where we have little reason to believe river temperatures from more than a week prior will give useful information about todays temperature. The output dimension of 7 days is a tuneable hyperparameter and does not need to match the lookback period. 
 
 The two dropout specifications impose a moderate regularization effect to help mitigate overfitting. How does it work? Simply put, during each forward or backward pass of the algorithm, 15% of the nodes are randomly ignored. This 15% level is also a tuneable hyperparameter. 
@@ -69,3 +66,4 @@ The two dropout specifications impose a moderate regularization effect to help m
 
 
 ## Final thoughts
+I have used the Keras functional API in both R and Python, and the syntax is nearly identical. This makes deployment and migration between languages a breeze.
