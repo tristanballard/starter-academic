@@ -1,5 +1,5 @@
 ---
-title: RiverHeatNet: Building a river temperature neural network with Keras functional API
+title: RiverHeatNet Building a river temperature neural network with Keras functional API
 subtitle: 
 
 # Summary for listings and search engines
@@ -9,7 +9,7 @@ summary: I develop a framework to flexibly incorporate both time-varying and sta
 projects: ["Deep Learning"]
 
 # Date published
-date: "2021-06-21T12:00:00Z"
+date: "2021-06-22T00:00:00Z"
 
 # Date updated
 lastmod: ""
