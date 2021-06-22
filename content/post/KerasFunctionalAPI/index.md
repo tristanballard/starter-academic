@@ -9,7 +9,7 @@ summary: I develop a framework to flexibly incorporate both time-varying and sta
 projects: ["Deep Learning"]
 
 # Date published
-date: "2021-06-21T00:00:00Z"
+date: "2021-06-21T12:00:00Z"
 
 # Date updated
 lastmod: ""
@@ -63,7 +63,7 @@ airTLayer <- airTInput %>%
   layer_lstm(units = 7, dropout = 0.15, recurrent_dropout = 0.15)
 ```
 
-The _units_ argument determines the dimensionality of the output space. I set it to 7 days. The input data are organized such that the 'lookback' period is 7 days as well, menaing that the model can only see data from the previous week when trying to fit today's value. I chose the lookback period based on a literature review, where we have little reason to believe river temperatures from more than a week prior will give useful information about todays temperature. The output dimension of 7 days is a tuneable hyperparameter and does not need to match the lookback period. 
+The _units_ argument determines the dimensionality of the output space. I set it to 7 days. The input data are organized such that the 'lookback' period is 7 days as well, meaning that the model can only see data from the previous week when trying to fit today's value. I chose the lookback period based on a literature review, where we have little reason to believe river temperatures from more than a week prior will give useful information about todays temperature. The output dimension of 7 days is a tuneable hyperparameter and does not need to match the lookback period. 
 
 The two dropout specifications impose a moderate regularization effect to help mitigate overfitting. How does it work? Simply put, during each forward or backward pass of the algorithm, 15% of the nodes are randomly ignored. This 15% level is also a tuneable hyperparameter. 
 
