@@ -1,5 +1,6 @@
 ---
-title: RiverHeatNet Building a river temperature neural network with Keras functional API
+title: >-
+  RiverHeatNet: Building a river temperature neural network with Keras functional API
 subtitle: 
 
 # Summary for listings and search engines
