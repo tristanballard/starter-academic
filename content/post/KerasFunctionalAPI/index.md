@@ -55,6 +55,7 @@ There are a few options for tackling this variable mismatch:
 
 Every neural network developed for river temperatures I have come across in the literature has gone with Option #1, sidestepping the modeling challenge by ignoring the time series structure of the data. This leaves a great opportunity to improve upon existing models. By the end of this post, you will see how I developed a model that flexibly incorporates both time series inputs and static inputs to predict a time series output using the Keras functional API.
 
+{{< figure src="./riverLocations.png" title="I trained and evaluated the model on 920 rivers (black), each having a time series of daily river temperature over many years along with associated time-series and time-invariant covariates. The pink and blue sights were both used to test the model performance." lightbox="true" >}}
 
 ## Keras Functional API
 Thanks to the Keras functional API, it is remarkably easy to combine recurrent neural network layers with standard, fully connected ANN layers. 
