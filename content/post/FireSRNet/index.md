@@ -40,7 +40,7 @@ tags:
 # - 教程
 ---
 
-In this really exciting project at Sust Global, we developed FireSRnet, a novel super-resolution (SR) architecture operating on a 3-channel geospatial dataset incorporating NASA satellite fire data 🛰, local temperature🌡️, and local land cover burnability🌲. 
+At Sust Global, we developed FireSRnet, a novel super-resolution (SR) architecture operating on a 3-channel geospatial dataset incorporating NASA satellite fire data 🛰, local temperature🌡️, and local land cover burnability🌲. 
 
 We compared FireSRnet performance at 2x, 4x, and 8x SR against a benchmark interpolation technique and validated model results with the recent fires in California and Australia. 
 
@@ -50,5 +50,5 @@ Then, we showcased how FireSRnet can leverage CMIP6 climate model simulations of
 - 🗣️ [**Check out the talk I gave at NeurIPS!**](https://slideslive.com/38942189/firesrnet-geosciencedriven-superresolution-of-future-fire-risk-from-climate-change)
 - 📃 [**Check out the paper on arXiv!**](https://arxiv.org/abs/2011.12353)
 
-I presented this work at the 2020 NeurIPS workshop on Tackling Climate Change with Machine Learning and was selected to give a spotlight talk. 
-🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+I presented this work at the 2020 NeurIPS workshop on Tackling Climate Change with Machine Learning and was selected to give a spotlight talk.  
+🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
