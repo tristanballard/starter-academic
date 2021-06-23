@@ -49,8 +49,8 @@ I came upon the Keras functional API after setting out to develop a model for pr
 
 There are a few options for tackling this variable mismatch:
 
-1. Use an ANN and ignore the time series aspect. _Pros_: Fast and easy. _Cons_: Lower accuracy since it leaves out so much useful information. 
-2. Use a recurrent neural network with the static variables converted to time series, repeating the same values at every time step. Woefully computationally inefficient.
+1. Use an ANN and ignore the time series aspect. _Pros:_ Fast and easy. _Cons:_ Lower accuracy since it leaves out so much useful information. 
+2. Use a recurrent neural network with the static variables converted to time series, repeating the same values at every time step. _Pros:_ Incorporates time series information. _Cons:_ Woefully computationally inefficient.
 3. Combine the best aspects of #1 and #2.
 
 Every neural network developed for river temperatures I have come across in the literature has gone with Option #1, sidestepping the modeling challenge by ignoring the time series structure of the data. This leaves a great opportunity to improve upon existing models. By the end of this post, you will see how I developed a model that flexibly incorporates both time series inputs and static inputs to predict a time series output using the Keras functional API.
