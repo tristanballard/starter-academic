@@ -1,5 +1,5 @@
 title: >-
-  Hyperparameter tuning with R's _tfruns__ package
+  Hyperparameter tuning with R's _tfruns_ package
 
 # Summary for listings and search engines
 summary: Selecting hyperparameter values for a neural network can greatly improve performance. With many potential combinations of hyperparameter values, however, it can quickly become intractable to test combinations manually. R's tfruns package helps implement this search and identify the best values.
