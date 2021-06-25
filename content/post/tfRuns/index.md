@@ -177,7 +177,7 @@ runs <- tuning_run("fitNNet.R",
 
 ```
 
-There are a few considerations here. First, the more options you provide, the greater the space of potential values. With only 2-3 candidate values for each hyperparameter value, there are already 2^5x3^3 = 864 possibilities to search over. For a small dataset or simple model, this may be manageable. In my case, a single iteration of the model takes over 30 minutes on my group's supercomputer with the task parallelized across 24 nodes. It would take me 18 days on the supercomputer to search all possible values. 
+There are a few considerations here. First, the more options you provide, the greater the space of potential values. With only 2-3 candidate values for each hyperparameter value, there are already 2^5x3^3 = 864 possibilities to search over. For a small dataset or simple model, this may be manageable. In my case, a single iteration of the model takes over 30 minutes on my group's supercomputer with the task parallelized across 24 nodes. **It would take me 18 days on the supercomputer to search all possible values.** 
 
 To solve this problem, you can randomly search over the different combinations of candidate values. The _sample = 0.10_ argument tells it to randomly sample 10%, or roughly 86 models, to run rather than all possible combinations. I ended up training 104 models in total. 
 
