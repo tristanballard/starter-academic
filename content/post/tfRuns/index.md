@@ -59,18 +59,20 @@ I came across the [_tfruns_ package](https://tensorflow.rstudio.com/tools/tfruns
 If you have a network coded in Keras already, there are only a few tweaks necessary to make it compatible.
 
 ## Step 0: Select hyperparameters
-In a perfect world you could search across all of the hyperparameters of your model at a great deal of granularity. But most of us do not have free access to supercomputer resources (a perk of grad school I will miss). Even if you _could_ train unlimited models doesn't mean you _should_. The [carbon emissions of fitting neural networks](https://news.mit.edu/2020/shrinking-deep-learning-carbon-footprint-0807) is non-negligible, increasing the need for efficient hyperparameter search algorithms.
+In a perfect world you could search across all of the hyperparameters of your model at a great deal of granularity. However, most of us do not have free access to supercomputer resources (a perk of grad school I will miss). 
+
+Even if you _could_ train models with unlimited resources doesn't mean you _should_. The [carbon emissions of fitting neural networks](https://news.mit.edu/2020/shrinking-deep-learning-carbon-footprint-0807) is non-negligible, increasing the need for efficient hyperparameter search algorithms.
 
 Instead, you will have to isolate the most influential hyperparameters and reasonable ranges of values to explore. The learning rate, for example, is well known to be a critical hyperparameter, but the difference between having 100 layers and 101 layers is probably quite small. There are a few rules of thumb to consider for hyperparameter values:
-- For learning rates, do a search over 10-5 to 10 in log-space
+- For learning rates, do a search over 10<sup>-5</sup> to 10 in log-space.
 - Tapering the number of neurons in successive layers used to by commonplace (pyramid shape), but it is less common now and easier to include the same number of neurons in layers. 
-- It is typically better to have a network with multiple layers, say 5 layers with 32 neurons each, than a single layer with many neurons, say 1 layer with 160 neurons, so that each layer better captures higher-level structures in the data.
+- It is typically better to have a network with multiple layers, say 5 layers with 32 neurons each, than a single layer with many neurons, say 1 layer with 160 neurons, because then each subsequent layer can capture higher-level structures in the data.
 - Picking a model with more layers and neurons than you need, then using regularization and early stopping to prevent overfitting, can work well.
  
 ## Step 1: Set default values for hyperparameters
-I am going to use the example model from the RiverHeatNet post.
+I am going to use the example model from the previous RiverHeatNet post.
 
-I do a search over 9 different hyperparameters. 4 of them are the number of nodes in different layers. 4 of them are dropout rates for particular layers. The last hyperparameter is associated with the learning rate. Rather than setting the learning rate as constant, I reduce the learning rate when the learning stagnates by a certain factor. That reduction factor is the last hyperparameter. This is referred to as learning rate annealing; starting with a high learning rate then reducing it over time can considerably speed up convergence. 
+Here I demonstrate a search over just 9 different hyperparameters. 4 of them are the number of nodes in different layers. 4 of them are dropout rates for particular layers. The last hyperparameter is associated with the learning rate. Rather than setting the learning rate as constant, I reduce the learning rate by a certain factor when performance begins to stagnate. That reduction factor is the last hyperparameter. This is referred to as learning rate annealing, starting with a high learning rate then reducing it over time, and can considerably speed up convergence. 
 
 The default values here can be thought of as placeholders.
 ``` r
@@ -78,7 +80,7 @@ The default values here can be thought of as placeholders.
 ## Default values
 FLAGS <- flags(
   # nodes
-  flag_numeric("nodes1", 6),
+  flag_numeric("nodes1", 8),
   flag_numeric("nodes2", 64),
   flag_numeric("nodes3", 64),
   flag_numeric("nodes4", 64),
@@ -111,9 +113,9 @@ airTLayer <- airTInput %>%
 airTlocalLayer <- airTlocalInput %>% 
   layer_lstm(units = 7, dropout = FLAGS$dropout1)
 ```
-The name _dropout1_ will become more clear later and is user defined. A handy feature of this is that you can force different layers to have the same hyperparameter values. For example, I force the dropout rates for my LSTM layers to be identical to reduce the dimensionality. 
+The name _dropout1_ was defined in Step 1. A handy feature of this is that you can force different layers to have the same hyperparameter values. For example, I force the dropout rates for my LSTM layers to be identical to reduce the dimensionality. 
 
-My input 'layer', itself an standard feedforward network, associated with the time-invariant covariates now looks like this:
+My input 'layer' associated with time-invariant covariates now looks like this:
 ``` r
 siteAttrLayer <- siteAttrInput %>%
   layer_dense(units = FLAGS$nodes1) %>%  
@@ -149,9 +151,9 @@ waterTOutput <- concatenated %>%
 ```
 
 ## Step 3: Specify candidate hyperparameter values
-Next, we create a separate script that reads in our model script (fitNNet.R) and fits it for a range of potential hyperparameter inputs. 
+Next, we create a separate script that reads in our model script (fitNNet.R) and fits the model for a range of potential hyperparameter inputs. 
 
-For simplicity I show how to do a grid search. For example, I tell it to consider only  8 nodes and 16 nodes for the _nodes1_ argument. To do a random search, you would simply need to replace those two values with a random number generator. 
+For simplicity I show how to do a grid search. For example, I tell it to consider only  8 nodes and 16 nodes for the _nodes1_ argument. To do a random search, you would simply need to replace those two values with a reasonable random number generator. 
 ``` r
 library(dplyr)  
 library(keras)
@@ -177,7 +179,7 @@ runs <- tuning_run("fitNNet.R",
 
 There are a few considerations here. First, the more options you provide, the greater the space of potential values. With only 2-3 candidate values for each hyperparameter value, there are already 2^5x3^3 = 864 possibilities to search over. For a small dataset or simple model, this may be manageable. In my case, a single iteration of the model takes over 30 minutes on my group's supercomputer with the task parallelized across 24 nodes. It would take me 18 days on the supercomputer to search all possible values. 
 
-To solve this problem, you can randomly search over the different combinations of candidate values. The _sample = 0.10_ argument tells it to randomly sample 10%, or roughly 86 combinations, to run.
+To solve this problem, you can randomly search over the different combinations of candidate values. The _sample = 0.10_ argument tells it to randomly sample 10%, or roughly 86 models, to run rather than all possible combinations.
 
 
 ## Step 4: Compare runs
@@ -187,7 +189,7 @@ ls_runs(order = metric_val_loss, decreasing = F, runs_dir = '.')
 ```
 
 
-``` r  
+``` r   
                   run_dir metric_val_loss metric_loss flag_nodes1 flag_nodes2
 83 ./2021-04-14T03-19-02Z          0.0658      0.0755          16          64
 27 ./2021-04-16T00-06-20Z          0.0737      0.0786          16          32
@@ -197,8 +199,34 @@ ls_runs(order = metric_val_loss, decreasing = F, runs_dir = '.')
 ```
 In the first row we see the 'best' model, as indicated by loss on the validation set, corresponds to the 83rd run. It has a mean-squared error of 0.0658 and sets 16 nodes for the first flag, 64 for the second flag, and so on (additional columns are hidden here). 
 
+To compare two model runs and get some visualizations simple visualizations:
+
+``` r
+compare_runs(runs = c('./2021-04-14T03-19-02Z', './2021-04-16T00-06-20Z'))
+```
+
+{{< figure src="./dashboard.png" title="Visualization dashboard for comparing model runs." lightbox="true" >}}
+
+This launches a page similar to Tensorboard, providing basics about the runs and their loss metrics. The Github-esque track changes shows that nodes1 has the same value between runs, but nodes 2 has 64 for the first run and 32 for the second run. 
+
+The dropout rates are interestingly all the same between the two runs, and low, suggesting the model requires relatively little dropout. If all of the top models show low levels of dropout, I might fix them and instead shift focus to the learning rate or nodes tuning. There are also many more modeling options to consider, like the optimizer choice. 
+
+What else can we tell from the model runs? Below I plot the distribution of validation losses across the n=104 runs I did in total. 
+``` r
+hist(ls_runs(order = metric_val_loss, decreasing = F, runs_dir = '.')$metric_val_loss, 
+	breaks = 9, 
+	las = 1, 
+	xlab = 'Validation Loss', 
+	main = 'Validation Loss Across\nDifferent Hyperparameter Combos', 
+	col = 'plum2')
+```
+{{< figure src="./lossHistogram.png" title="A random 'blind' guess at the hyperparameter values would land around a loss value of 0.12, compared with our best model at 0.0658, a roughly 50% improvement." lightbox="true" >}}
+
+The losses are roughly normally distributed with a mean of 0.12. This tells us that a typical 'blind' guess at the hyperparameter values would land around a loss value of 0.12. Our best model's loss is nearly half of that, *suggesting the hyperparameter tuning improved model performance by 50%!* I would be curious to see in practice if distributions are typically normal, and in the case when they aren't normal, what that might tell us. 
+
 
 ## Tips
 1. Run the model with default values first to get a sense of the expected computation costs. 
-2. Randomly sample over grid values rather than searching all possible values. When looking at the results, you may find that certain hyperparameters gravitate towards the same value. Fix that value, then perform a more exhaustive follow-up search on the remaining hyperparameters.
-3. Similar to #2, the random search may tell you that dropout rates between 0 and 0.2 tend to be better for a hyperparameter. Then you can narrow your search over just that span for follow-up searches. This is essentially a brute force Bayesian search optimization. 
+2. Randomly sample hyperparameter value combinations rather than searching all possible combinations. When looking at the results, you may find that certain hyperparameters gravitate towards the same value. Fix those values, then perform a more exhaustive follow-up search on the remaining hyperparameters.
+3. Similar to #2, the random search may tell you that, for instance, a value between 0 and 0.2 tends to be better for a dropout rate. Then you can narrow your search over just that span for follow-up searches. Repeating this process to narrow the windows for each hyperparameter is essentially a brute-force Bayesian search optimization. 
+4. By comparing the best and average performers from your search, you can see what the opportunity gap is for hyperparameter tuning. If it is negligible for your end goal, you can focus your efforts elsewhere.
