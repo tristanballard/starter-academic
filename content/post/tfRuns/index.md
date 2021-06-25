@@ -179,7 +179,7 @@ runs <- tuning_run("fitNNet.R",
 
 There are a few considerations here. First, the more options you provide, the greater the space of potential values. With only 2-3 candidate values for each hyperparameter value, there are already 2^5x3^3 = 864 possibilities to search over. For a small dataset or simple model, this may be manageable. In my case, a single iteration of the model takes over 30 minutes on my group's supercomputer with the task parallelized across 24 nodes. It would take me 18 days on the supercomputer to search all possible values. 
 
-To solve this problem, you can randomly search over the different combinations of candidate values. The _sample = 0.10_ argument tells it to randomly sample 10%, or roughly 86 models, to run rather than all possible combinations.
+To solve this problem, you can randomly search over the different combinations of candidate values. The _sample = 0.10_ argument tells it to randomly sample 10%, or roughly 86 models, to run rather than all possible combinations. I ended up training 104 models in total. 
 
 
 ## Step 4: Compare runs
@@ -207,11 +207,11 @@ compare_runs(runs = c('./2021-04-14T03-19-02Z', './2021-04-16T00-06-20Z'))
 
 {{< figure src="./dashboard.png" title="Visualization dashboard for comparing model runs." lightbox="true" >}}
 
-This launches a page similar to Tensorboard, providing basics about the runs and their loss metrics. The Github-esque track changes shows that nodes1 has the same value between runs, but nodes 2 has 64 for the first run and 32 for the second run. 
+This launches a page similar to Tensorboard, providing basics about the runs and their loss metrics. The Github-esque track changes shows that _nodes1__ has the same value between runs, but _nodes2_ has 64 for the first run and 32 for the second run. 
 
-The dropout rates are interestingly all the same between the two runs, and low, suggesting the model requires relatively little dropout. If all of the top models show low levels of dropout, I might fix them and instead shift focus to the learning rate or nodes tuning. There are also many more modeling options to consider, like the optimizer choice. 
+The dropout rates are interestingly all the same between the two runs--and low--suggesting the model requires relatively little dropout. If all of the top models show low levels of dropout, I might fix them and instead shift focus to the learning rate or nodes tuning. There are also many more modeling options to consider, like the optimizer choice. 
 
-What else can we tell from the model runs? Below I plot the distribution of validation losses across the n=104 runs I did in total. 
+What else can we tell from the model runs? Below I plot the distribution of validation losses across the n=104 runs, each representing a different combination of hyperparameter values. 
 ``` r
 hist(ls_runs(order = metric_val_loss, decreasing = F, runs_dir = '.')$metric_val_loss, 
 	breaks = 9, 
@@ -222,7 +222,7 @@ hist(ls_runs(order = metric_val_loss, decreasing = F, runs_dir = '.')$metric_val
 ```
 {{< figure src="./lossHistogram.png" title="A random 'blind' guess at the hyperparameter values would land around a loss value of 0.12, compared with our best model at 0.0658, a roughly 50% improvement." lightbox="true" >}}
 
-The losses are roughly normally distributed with a mean of 0.12. This tells us that a typical 'blind' guess at the hyperparameter values would land around a loss value of 0.12. Our best model's loss is nearly half of that, *suggesting the hyperparameter tuning improved model performance by 50%!* I would be curious to see in practice if distributions are typically normal, and in the case when they aren't normal, what that might tell us. 
+The losses are roughly normally distributed with a mean of 0.12. This tells us that a typical 'blind' guess at the hyperparameter values would land around a loss value of 0.12. Our best model's loss is nearly half of that, **suggesting the hyperparameter tuning improved model performance by 50%!** I would be curious to see in practice if distributions are typically normal, and in the case when they aren't normal, what that might tell us. 
 
 
 ## Tips
