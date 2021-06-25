@@ -30,7 +30,6 @@ experience:
     date_start: '2020-05-01'
     date_end: ''
     description: |2-
-        Responsibilities include:
         
         * Applied AI and ML to latest climate models
         * Processed 100s of GBs of spatiotemporal data
@@ -53,7 +52,7 @@ experience:
     company: Duke University
     company_url: ''
     company_logo: duke
-    location: California
+    location: North Carolina
     date_start: '2014-09-01'
     date_end: '2015-06-01'
     description: |2-
