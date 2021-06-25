@@ -32,10 +32,9 @@ experience:
     description: |2-
         Responsibilities include:
         
-        * Applying AI and ML to latest climate models
-        * Processing 100s of GBs of spatiotemporal data
-        * Developing asset-level risk metrics
-        * Evaluating model performance
+        * Applied AI and ML to latest climate models
+        * Processed 100s of GBs of spatiotemporal data
+        * Developed asset-level risk metrics
         
   - title: PhD Student
     company: Stanford University
@@ -45,9 +44,23 @@ experience:
     date_start: '2015-09-01'
     date_end: '2021-08-27'
     description: |2-
-        Responsibilities include:
         
-        * Developing statistical models for ecological impacts of climate change
+        * Developed deep learning models for hazardous river temperatures
+        * Employed quantile regression to identify shifts towards more extreme events
+        * Modeled long-term climate impacts on nitrogen runoff across the U.S.
+
+  - title: Research Scientist
+    company: Duke University
+    company_url: ''
+    company_logo: stanford
+    location: California
+    date_start: '2014-09-01'
+    date_end: '2015-06-01'
+    description: |2-
+        
+        * Applied Bayesian model averaging to climate model projections 
+        * Developed error metrics for Markov chain Monte Carlo simulations of wind power
+        * Forecast Ethiopian precipitation changes due to climate change
 
 design:
   columns: '2'
