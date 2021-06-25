@@ -52,7 +52,7 @@ experience:
   - title: Research Scientist
     company: Duke University
     company_url: ''
-    company_logo: stanford
+    company_logo: duke
     location: California
     date_start: '2014-09-01'
     date_end: '2015-06-01'
