@@ -6,7 +6,7 @@ title: Tristan Ballard
 superuser: true
 
 # Role/position/tagline
-role: AI and Climate Science
+role: Tackling Climate Change with AI
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -14,7 +14,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: Bringing the latest in AI and ML to climate science.
+bio: Bringing the latest in AI and ML to sustainability and climate science.
 
 # Interests to show in About widget
 interests:
@@ -72,4 +72,6 @@ email: ""
 highlight_name: false
 ---
 
-I am a PhD student at Stanford University. My research interests include developing data-driven solutions to global challenges, with several research projects implementing modern data science techniques to better understand human impact on global climate and water resources over a range of scales. 
+I am a statistical research scientist passionate about developing AI/ML models for social good, enabling the next generation of sustainability. My research has been published in top journals and academic conferences (NeurIPS, AAAI, ICLR).
+
+I have led or collaborated on a variety of projects building and productizing computer vision, large language models, and other statistical models, including topics on climate modeling, remote sensing, extreme events, Bayesian model averaging, and more. I have 8+ years coding experience in Python and R, along with experience developing AI models in deep learning frameworks PyTorch and Keras.
